@@ -37,7 +37,7 @@ typedef struct
 }
 Field;
 
-static int Util_Time(void)
+static int32_t Util_Time(void)
 {
     struct timeval stamp;
     gettimeofday(&stamp, NULL);
@@ -64,7 +64,7 @@ static bool Point_Equal(const Point a, const Point b)
     return a.x == b.x && a.y == b.y;
 }
 
-static Queue Queue_Make(const int max)
+static Queue Queue_Make(const int32_t max)
 {
     Point* point = UTIL_ALLOC(Point, max);
     UTIL_CHECK(point);
@@ -220,9 +220,9 @@ int main(void)
     const Point start = { 18, 14 };
     const Point goal = { 28, 7 };
 
-    const int t0 = Util_Time();
+    const int32_t t0 = Util_Time();
     const Queue path = Field_SearchBreadthFirst(field, start, goal);
-    const int t1 = Util_Time();
+    const int32_t t1 = Util_Time();
 
     field = Field_Trace(field, path);
     Field_Print(field);

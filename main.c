@@ -41,7 +41,7 @@ static int32_t Util_Time(void)
 {
     struct timeval stamp;
     gettimeofday(&stamp, NULL);
-    return stamp.tv_sec * (int) 1e6 + stamp.tv_usec;
+    return stamp.tv_sec * (int32_t) 1e6 + stamp.tv_usec;
 }
 
 static char* Util_StringDup(const char* string)

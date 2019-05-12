@@ -39,18 +39,18 @@ Field;
 
 static int Util_Time(void)
 {
-    struct timeval ts;
-	gettimeofday(&ts, NULL);
-	return ts.tv_sec * (int) 1e6 + ts.tv_usec;
+    struct timeval stamp;
+	gettimeofday(&stamp, NULL);
+	return stamp.tv_sec * (int) 1e6 + stamp.tv_usec;
 }
 
-static char* Util_StringDup(const char* s)
+static char* Util_StringDup(const char* string)
 {
-    const int32_t len = strlen(s) + 1;
-    char* const d = UTIL_ALLOC(char, len);
-    UTIL_CHECK(d);
-    strcpy(d, s);
-    return d;
+    const int32_t len = strlen(string) + 1;
+    char* const dup = UTIL_ALLOC(char, len);
+    UTIL_CHECK(dup);
+    strcpy(dup, string);
+    return dup;
 }
 
 static Point Point_Add(const Point a, const Point b)
@@ -128,7 +128,7 @@ static Queue Field_SearchBreadthFirst(const Field field, const Point start, cons
             break;
         const Point deltas[] = {
             { -1, +1 }, { 0, +1 }, { 1, +1 },
-            { -1,  0 }, /* --- */  { 1,  0 },
+            { -1,  0 }, /* ---- */ { 1,  0 },
             { -1, -1 }, { 0, -1 }, { 1, -1 },
         };
         for(int i = 0; i < UTIL_LEN(deltas); i++)

@@ -40,8 +40,8 @@ Field;
 static int Util_Time(void)
 {
     struct timeval stamp;
-	gettimeofday(&stamp, NULL);
-	return stamp.tv_sec * (int) 1e6 + stamp.tv_usec;
+    gettimeofday(&stamp, NULL);
+    return stamp.tv_sec * (int) 1e6 + stamp.tv_usec;
 }
 
 static char* Util_StringDup(const char* string)

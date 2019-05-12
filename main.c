@@ -118,7 +118,7 @@ static Queue Field_SearchBreadthFirst(const Field field, const Point start, cons
     frontier = Queue_Enqueue(frontier, start);
     Queue came_from = Queue_Make(8);
     const Point none = { -1, -1 };
-    for(int i = 0; i < field.rows * field.cols; i++)
+    for(int32_t i = 0; i < field.rows * field.cols; i++)
         came_from = Queue_Enqueue(came_from, none);
     while(!Queue_IsEmpty(frontier))
     {
@@ -131,7 +131,7 @@ static Queue Field_SearchBreadthFirst(const Field field, const Point start, cons
             { -1,  0 }, /* ---- */ { 1,  0 },
             { -1, -1 }, { 0, -1 }, { 1, -1 },
         };
-        for(int i = 0; i < UTIL_LEN(deltas); i++)
+        for(int32_t i = 0; i < UTIL_LEN(deltas); i++)
         {
             const Point next = Point_Add(current, deltas[i]);
             if(Field_InBounds(field, next)
@@ -160,7 +160,7 @@ static Queue Field_SearchBreadthFirst(const Field field, const Point start, cons
 
 static Field Field_Trace(Field field, const Queue path)
 {
-    for(int i = path.start; i < path.end; i++)
+    for(int32_t i = path.start; i < path.end; i++)
     {
         const Point point = path.point[i];
         field.object[point.x + field.cols * point.y] = '*';
@@ -170,9 +170,9 @@ static Field Field_Trace(Field field, const Queue path)
 
 static void Field_Print(const Field field)
 {
-    for(int y = 0; y < field.rows; y++)
+    for(int32_t y = 0; y < field.rows; y++)
     {
-        for(int x = 0; x < field.cols; x++)
+        for(int32_t x = 0; x < field.cols; x++)
             printf("%c", field.object[x + field.cols * y]);
         putchar('\n');
     }

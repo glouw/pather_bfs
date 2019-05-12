@@ -24,3 +24,5 @@ https://redblobgames.com/pathfinding/a-star/introduction.html
     #   *###############*    #    #    ###########    #
     #    ***************     #    #                   #
     ###################################################
+
+It is but a humble breadth search path finder, but it gets the job done.
